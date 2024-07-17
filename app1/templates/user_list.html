@@ -1,0 +1,56 @@
+{% include 'base_template.html' %}
+
+{% block content %}
+        <div class="mt-2">
+        <div class="container">
+            <div class="mb-1">
+                <a href="/add_user/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add User</a>
+            </div>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        {% for field in form %}
+                            <th>{{ field.label}}</th>
+                        {% endfor %}
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for user in users %}
+                            <tr>
+                                <td>
+                                    {{ user.id }}
+                                </td>
+                                <td>
+                                    {{ user.username }}
+                                </td>
+                                <td>
+                                    {{ user.password }}
+                                </td>
+                                <td>
+                                    {{ user.email }}
+                                </td>
+                                <td>
+                                    {{ user.department }}
+                                </td>
+                                <td>
+                                    {{ user.get_gender_display }}
+                                </td>
+                                <td>
+                                    <a href="/edit_user/{{ user.id }}" class="btn btn-success btn-xs" role="button" aria-disabled="true">Modify</a>
+                                    <a href="/delete_user/{{ user.id }}" class="btn btn-danger btn-xs" role="button" aria-disabled="true">Remove</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+

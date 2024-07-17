@@ -1,0 +1,35 @@
+{% include 'base_template.html' %}
+
+{% block content %}
+        <div class="mt-2">
+        <div class="container">
+            <div class="mb-1">
+                <a href="/add_department/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Department</a>
+            </div>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Modify</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for department in departments %}
+                    <tr>
+                        <th scope="row">{{ department.id }}</th>
+                        <td>{{ department.title }}</td>
+                        <td>
+                            <a href="/edit_department/{{ department.id }}" class="btn btn-success btn-xs" role="button" aria-disabled="true">Modify</a>
+                            <a href="/delete_department/{{ department.id }}" class="btn btn-danger btn-xs" role="button" aria-disabled="true">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+

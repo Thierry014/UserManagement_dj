@@ -1,0 +1,19 @@
+{% include 'base_template.html' %}
+
+{% block content %}
+        <div class="mt-2">
+        <div class="container">
+            <form class="form-inline" method="post" action="/edit_department/{{ department.id }}">
+                {% csrf_token %}
+                <div class="form-group mx-sm-3 mb-2">
+                    <span>Title</span>
+                    <input type="text" class="form-control" name="department_title" placeholder={{ department.title }}>
+                </div>
+              <button type="submit" class="btn btn-warning mb-2">Update</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+
+
