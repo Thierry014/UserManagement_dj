@@ -117,7 +117,12 @@ class PrettyNumMf(forms.ModelForm):
 
 def prettynum_list(request):
     prettynummf = PrettyNumMf()
-    prettynum_queryset = PrettyNum.objects.all().order_by('id')
+    #add search logic
+    search_q = request.GET.get('q', '')
+    search_dict = {}
+    if search_q:
+        search_dict['mobile__contains'] = search_q
+    prettynum_queryset = PrettyNum.objects.filter(**search_dict).order_by('id')
     print(prettynum_queryset)
     return render(request, "prettynum_list.html", {'form': prettynummf, 'prettynum_list': prettynum_queryset})
 
